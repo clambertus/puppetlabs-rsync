@@ -13,6 +13,7 @@ class rsync::server(
   $use_chroot = 'yes',
   $uid        = 'nobody',
   $gid        = 'nobody'
+  $log_dir   = '/var/log/rsync'
 ) inherits rsync {
 
   $conf_file = $::osfamily ? {
@@ -55,6 +56,10 @@ class rsync::server(
   }
 
   file { $rsync_fragments:
+    ensure  => directory,
+  }
+
+  file { $log_dir:
     ensure  => directory,
   }
 

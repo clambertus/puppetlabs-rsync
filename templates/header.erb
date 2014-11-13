@@ -12,3 +12,6 @@ address = <%= @address %>
 <% if @motd_file != 'UNSET' -%>
 motd file = <%= @motd_file %>
 <% end -%>
+<% if @log_dir -%>
+log file = @log_file/rsync
+<% end -%>
