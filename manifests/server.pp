@@ -12,9 +12,8 @@ class rsync::server(
   $motd_file  = 'UNSET',
   $use_chroot = 'yes',
   $uid        = 'nobody',
-  $gid        = 'nobody',
-  $log_dir   = '/var/log/rsync/rsync',
-  $transfer_logging = true,
+  $gid        = 'nobody'
+  $log_dir   = '/var/log/rsync'
 ) inherits rsync {
 
   $conf_file = $::osfamily ? {
@@ -60,6 +59,10 @@ class rsync::server(
   }
 
   concat { $conf_file: }
+
+  file { $log_dir:
+    ensure  => directory,
+  }
 
   # Template uses:
   # - $use_chroot
