@@ -13,7 +13,7 @@ address = <%= @address %>
 motd file = <%= @motd_file %>
 <% end -%>
 <% if @log_dir -%>
-log file = <% @log_dir -%>
+log file = /var/log/rsync/rsync
 <% end -%>
 <% if @transfer_logging -%>
 transfer logging = true
