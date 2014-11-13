@@ -60,10 +60,6 @@ class rsync::server(
 
   concat { $conf_file: }
 
-  file { $log_dir:
-    ensure  => directory,
-  }
-
   # Template uses:
   # - $use_chroot
   # - $address
