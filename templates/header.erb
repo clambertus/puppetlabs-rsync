@@ -15,3 +15,6 @@ motd file = <%= @motd_file %>
 <% if @log_dir -%>
 log file = @log_file/rsync
 <% end -%>
+<% if @transfer_logging -%>
+transfer logging = @transfer_logging
+<% end -%>

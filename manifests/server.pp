@@ -14,6 +14,7 @@ class rsync::server(
   $uid        = 'nobody',
   $gid        = 'nobody'
   $log_dir   = '/var/log/rsync'
+  $transfer_logging = false,
 ) inherits rsync {
 
   $conf_file = $::osfamily ? {
