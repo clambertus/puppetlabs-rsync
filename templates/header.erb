@@ -13,8 +13,9 @@ address = <%= @address %>
 motd file = <%= @motd_file %>
 <% end -%>
 <% if @log_dir -%>
-log file = <% @log_file -%>
+log file = <% @log_dir -%>
 <% end -%>
 <% if @transfer_logging -%>
 transfer logging = <% @transfer_logging -%>
 <% end -%>
+
