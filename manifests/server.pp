@@ -26,6 +26,17 @@ class rsync::server(
     default => 'rsync',
   }
 
+  if $log_dr {
+    file { 'rsync log folder':
+      path   => $log_dir,
+      ensure => directory,
+      owner  => 'root',
+      group  => 'root',
+      mode   => '0644',
+      notify => Service["${servicename}"],
+    }
+  }
+
   if $use_xinetd {
     include xinetd
     xinetd::service { 'rsync':
