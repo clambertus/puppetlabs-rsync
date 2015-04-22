@@ -32,7 +32,6 @@ class rsync::server(
     owner  => 'root',
     group  => 'root',
     mode   => '0644',
-    notify => Service["${servicename}"],
   }
 
 
