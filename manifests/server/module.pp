@@ -56,7 +56,7 @@ define rsync::server::module (
   $auth_users       = undef,
   $hosts_allow      = undef,
   $hosts_deny       = undef,
-  $transfer_logging = undef,
+  $transfer_logging = true,
   $log_format       = undef,
   $refuse_options   = undef)  {
 
