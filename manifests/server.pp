@@ -14,6 +14,10 @@ class rsync::server(
   $uid        = 'nobody',
   $gid        = 'nobody',
   $log_dir   = '/var/log/rsync',
+  $service_ensure = 'running',
+  $rsync_enable = true,
+  $rsync_opts = '',
+  $rsync_nice = '',
 ) inherits rsync {
 
   $conf_file = $::osfamily ? {
@@ -27,8 +31,8 @@ class rsync::server(
   }
 
   file { 'rsync log folder':
-    path   => $log_dir,
     ensure => directory,
+    path   => $log_dir,
     owner  => 'root',
     group  => 'root',
     mode   => '0644',
@@ -47,7 +51,7 @@ class rsync::server(
   } else {
     
     service { $servicename:
-      ensure     => running,
+      ensure     => $service_ensure,
       enable     => true,
       hasstatus  => true,
       hasrestart => true,
@@ -56,8 +60,8 @@ class rsync::server(
 
     if ( $::osfamily == 'Debian' ) {
       file { '/etc/default/rsync':
-        source => 'puppet:///modules/rsync/defaults',
-        notify => Service['rsync'],
+        content => template('rsync/defaults.erb'),
+        notify  => Service['rsync'],
       }
     }
   }

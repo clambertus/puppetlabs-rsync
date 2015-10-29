@@ -7,7 +7,7 @@
 #  Use "inetd" if you want to start the rsyncd from inetd,
 #  all this does is prevent the init.d script from printing a message
 #  about not starting rsyncd (you still need to modify inetd's config yourself).
-RSYNC_ENABLE=true
+RSYNC_ENABLE=<%= @rsync_enable %>
 
 # which file should be used as the configuration file for rsync.
 # This file is used instead of the default /etc/rsyncd.conf
@@ -22,13 +22,13 @@ RSYNC_ENABLE=true
 #  Possibilities are:
 #   --address=123.45.67.89    (bind to a specific IP address)
 #   --port=8730       (bind to specified port; default 873)
-RSYNC_OPTS=''
+RSYNC_OPTS='<%= @rsync_opts %>'
 
 # run rsyncd at a nice level?
 #  the rsync daemon can impact performance due to much I/O and CPU usage,
 #  so you may want to run it at a nicer priority than the default priority.
 #  Allowed values are 0 - 19 inclusive; 10 is a reasonable value.
-RSYNC_NICE=''
+RSYNC_NICE='<%= @rsync_nice %>'
 
 # run rsyncd with ionice?
 #  "ionice" does for IO load what "nice" does for CPU load.
